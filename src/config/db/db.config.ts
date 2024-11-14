@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { MONGO_URI } from '../../constant';
+import { MONGO_URI } from '@/constant';
 
 mongoose.Promise = global.Promise;
 export const dbConnect = (): void => {

@@ -1,4 +1,5 @@
 
+import { httpStatusCodes } from '@/utils';
 import { NextFunction, Request, Response } from 'express';
 import { check, validationResult } from 'express-validator';
 
@@ -11,7 +12,7 @@ export const userValidator = [
       const error = validationResult(req);
       if (!error.isEmpty()) {
         const err = new Error((error as any).errors[0].msg);
-        err.statusCode = 422;
+        err.statusCode = httpStatusCodes.UNPROCESSABLE_ENTITY;
         err.data = error;
         return next(err);
       }

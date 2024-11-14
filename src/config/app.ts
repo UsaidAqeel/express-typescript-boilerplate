@@ -8,6 +8,7 @@ import morgan from "morgan"
 
 dotenv.config();
 const app = express();
+
 dbConnect();
 
 var corsOptions = {

@@ -1,4 +1,4 @@
-import bcrypt, { compare } from "bcrypt";
+import bcrypt from "bcrypt";
 import { BCRYPT_SALT } from "@/constant";
 
 /**

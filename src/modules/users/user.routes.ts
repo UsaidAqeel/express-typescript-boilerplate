@@ -1,13 +1,9 @@
-import express from 'express';
+import express from "express";
+import { registerUserController } from "./user.controller";
+import { userValidator } from "./user.middleware";
+
 const userRouter = express.Router();
-import {
-    registerUserController,
-  } from './user.controller';
-import {
-    userValidator,
-  } from './user.middleware';
 
-userRouter.route('/register').post(userValidator, registerUserController);
-
+userRouter.route("/register").post(userValidator, registerUserController);
 
 export default userRouter;

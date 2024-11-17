@@ -5,7 +5,7 @@
     readonly data: T;
     readonly timestamp: string;
 
-    constructor(
+    private constructor(
       code: number,
       status: boolean,
       message: string,
@@ -19,12 +19,10 @@
       this.timestamp = timestamp;
     }
 
-    // Method to return a success response
     static success<T>(statusCode: number, message: string, data: T) {
       return new ResponsePacket(statusCode, true, message, data);
     }
 
-    // Method to return a failure response
     static failure<T>(statusCode: number, message: string, data: T) {
       return new ResponsePacket(statusCode, false, message, data);
     }

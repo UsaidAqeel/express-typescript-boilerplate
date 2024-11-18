@@ -1,19 +1,13 @@
-import { NextFunction, Response } from "express";
+import { NextFunction } from "express";
 import { User, IUsers } from "./user.model";
-import bcrypt from "bcrypt";
-import { BCRYPT_SALT } from "../../constant";
-import { httpStatusCodes, ResponsePacket } from "../../utils";
+import { hashPassword, httpStatusCodes, ResponsePacket } from "@/utils";
 
 export const isEmailExistService = async (
   email: any,
   next: NextFunction
 ): Promise<boolean | undefined | void> => {
   try {
-    const isUser = await User.findOne({
-      email: email,
-      isDeleted: false,
-      status: "ACTIVE",
-    });
+    const isUser = await User.findOne({email: email});
 
     return !!isUser;
   } catch (error) {
@@ -26,8 +20,10 @@ export const createUserService = async (
   data: IUsers
 ): Promise<Record<string, any>> => {
   try {
-    const salt = await bcrypt.genSalt(parseInt(BCRYPT_SALT as string));
-    data.password = await bcrypt.hash(data.password as string, salt);
+    const password = await hashPassword(data?.password as string);
+    if (!password) throw new Error("Error: An error occurred while hashing the password");
+
+    data.password = password;
 
     const newUser = new User(data);
     const result = await newUser.save();

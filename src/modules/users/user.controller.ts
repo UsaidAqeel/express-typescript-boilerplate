@@ -7,7 +7,6 @@ export const registerUserController = async (
   next: NextFunction
 ): Promise<void> => {
   try {
-    console.log(req.body, "This is the body")
     const isUserExist = await isEmailExistService(req.body.email, next);
 
     if (!isUserExist) {

@@ -2,8 +2,8 @@ import cors from "cors";
 import express, { NextFunction, Request, Response } from "express";
 import helmet from "helmet";
 import * as dotenv from "dotenv";
-import { dbConnect } from "@/config/db/db.config";
-import userRoutes from "@/modules/users/user.routes";
+import { dbConnect } from "../config/db/db.config";
+import userRoutes from "./../modules/users/user.routes";
 import morgan from "morgan";
 
 dotenv.config();

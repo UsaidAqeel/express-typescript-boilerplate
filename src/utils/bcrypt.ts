@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import { BCRYPT_SALT } from "@/constant";
+import { BCRYPT_SALT } from "./../constant";
 
 /**
  * Hashes a password using bcrypt.

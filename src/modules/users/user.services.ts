@@ -1,6 +1,6 @@
 import { NextFunction } from "express";
 import { User, IUsers } from "./user.model";
-import { hashPassword, httpStatusCodes, ResponsePacket } from "@/utils";
+import { hashPassword, httpStatusCodes, ResponsePacket } from "../../utils";
 
 export const isEmailExistService = async (
   email: any,

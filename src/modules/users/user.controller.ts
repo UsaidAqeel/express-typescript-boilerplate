@@ -25,3 +25,11 @@ export const registerUserController = async (
     next(error);
   }
 };
+
+export const loginUserController = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
+  // Implement login user controller
+}
